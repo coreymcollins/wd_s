@@ -18,92 +18,45 @@ a {
 	}
 }
 
-// Default menu (active after a fresh WordPress install)
+// Navigation container
+.main-navigation {
+	@include z-index(main-navigation);
 
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+// Menu toggle
+.menu-toggle {
+	@include z-index(menu-toggle, absolute);
+
+	background-color: $color-gray;
+	color: $color-white;
+	padding: rem(10);
+	right: 0;
+	text-decoration: none;
+	top: 0;
+
+	.icon {
+		@include size(rem(16) rem(16));
+
+		display: inline-block;
+		fill: $color-white;
+		margin-right: rem(5);
+	}
+}
+
+// Main menu
 .menu {
 	@include list-reset;
+	@include z-index(menu);
 
+	// Menu items
 	li {
-		margin: 0 rem(10) 0 0;
-	}
+		display: table-cell;
 
-	ul {
-		@include list-reset;
-	}
-
-	&.menu-horizontal {
-
-		li {
-			display: inline-block;
-		}
-	}
-
-	&.menu-vertical {
-
-		li {
-			margin: 0;
-		}
-
-		a {
-			padding: rem(10);
-			border-bottom: 1px solid $color-background-hr;
-		}
-	}
-
-	&.dropdown {
-
-		// Sub-menu
-		ul {
-			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-			float: left;
-			left: -999em;
-			position: absolute;
-			top: em(24px);
-			z-index: 99999;
-
-			// Sub-sub menu
-			ul {
-				left: -999em;
-				top: 0;
-			}
-
-			// Sub-menu items
-			li {
-
-				&:hover > ul,
-				&.focus > ul {
-					left: 100%;
-				}
-			}
-
-			// Sub-menu links
-			a {
-				@include size(rem(200) auto);
-			}
-
-			:hover > a,
-			.focus > a {
-			}
-
-			a:hover,
-			a.focus {
-			}
-		}
-
-		// Display sub-menu on hover
-		li:hover > ul,
-		li.focus > ul {
-			left: auto;
-		}
-
-		// Menu items
-		li {
-			float: left;
-			position: relative;
-
-			&:hover > a,
-			&.focus > a {
-			}
+		&:hover > a,
+		&.focus > a {
 		}
 	}
 
@@ -111,42 +64,57 @@ a {
 	a {
 		display: block;
 		text-decoration: none;
+		padding: rem(10);
 	}
 
 	// Current items
 	.current_page_item a,
 	.current-menu-item a {
 	}
-}
 
-// Main navigation (after creating a menu in the dashboard)
-.main-navigation {
-	@include size(100% auto);
+	// Sub-menu
+	.sub-menu {
+		box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+		float: left;
+		left: -999em;
+		position: absolute;
+		top: em(24px);
+		z-index: 99999;
 
-	clear: both;
-	display: block;
-	float: left;
+		// Sub-sub menu
+		ul {
+			left: -999em;
+			top: 0;
+		}
 
-	// Menu area
-	ul {
-		display: none;
-
-		@include media($phone-landscape) {
+		// Sub-menu items
+		li {
 			display: block;
+
+			&:hover > ul,
+			&.focus > ul {
+				left: 100%;
+			}
+		}
+
+		// Sub-menu links
+		a {
+			@include size(rem(200) auto);
+		}
+
+		:hover > a,
+		.focus > a {
+		}
+
+		a:hover,
+		a.focus {
 		}
 	}
 
-	&.toggled ul {
-		display: block;
-	}
-}
-
-// Small menu
-.menu-toggle {
-	display: block;
-
-	@include media($phone-landscape) {
-		display: none;
+	// Display sub-menu on hover
+	li:hover > ul,
+	li.focus > ul {
+		left: auto;
 	}
 }
 
