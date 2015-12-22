@@ -17,8 +17,9 @@
 
 // The layers, add them here.
 $layers: (
-	// 'layer-a',
-	// 'layer-b',
+	'menu-toggle',
+	'menu',
+	'main-navigation',
 );
 
 // Gets the index (in reverse) of the item's position to use as z-index.
