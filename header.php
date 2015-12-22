@@ -47,7 +47,9 @@
 			</div><!-- .site-branding -->
 
 			<nav id="site-navigation" class="main-navigation">
-				<button class="menu-toggle" aria-controls="primary-menu"><?php esc_html_e( 'Primary Menu', '_s' ); ?></button>
+
+				<a href="javascript:void(0)" class="navigation-menu-button menu-toggle"><?php _s_do_svg( array( 'icon' => 'bars', 'title' => __( 'Toggle Navigation', '_s' ) ) ); ?> <span><?php esc_html_e( 'Menu', '_s' ); ?></span></a>
+
 				<?php
 					wp_nav_menu( array(
 						'theme_location' => 'primary',
