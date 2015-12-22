@@ -136,8 +136,8 @@ add_action( 'save_post',     '_s_category_transient_flusher' );
 function _s_get_svg( $args = array() ) {
 
 	// Make sure $args are an array.
-	if ( empty( $args ) ) {
-		return esc_html__( 'Please define default parameters in the form of an array.', '_s' );
+	if ( false === is_array( $args ) ) {
+		return esc_html__( 'Please define SVG parameters in the form of an array.', '_s' );
 	}
 
 	// YUNO define an icon?
